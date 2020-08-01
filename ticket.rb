@@ -50,4 +50,17 @@ puts "This ticket is for: #{ticket.event}, at #{ticket.venue}.\n" +
 # :protected_methods, :public_method, :public_methods, :public_send, :remove_instance_variable, :respond_to?,
 # :send, :singleton_class, :singleton_method, :singleton_methods, :taint, :tainted?, :tap, :then, :to_enum,
 # :to_s, :trust, :untaint, :untrust, :untrusted?, :yield_self]
-p Object.new.methods.sort
+# p Object.new.methods.sort
+
+
+def ticket.print_details(*x)
+  x.each { |detail| puts "This ticket is #{detail}" }
+end
+
+ticket.print_details "calopsita", "jafar", "salt"
+
+str = "Hello"
+abc = str
+str = "Goodbye"
+puts str
+puts abc
