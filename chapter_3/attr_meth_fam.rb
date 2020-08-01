@@ -1,6 +1,6 @@
 class RefactoredTicket
-  attr_reader :price, :venue, :date
-  attr_writer :price
+  attr_reader :venue, :date
+  attr_accessor :price
 
   def initialize(venue, date)
     @venue = venue
