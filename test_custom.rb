@@ -1,4 +1,5 @@
 require_relative 'custom'
+# load 'custom.rb'
 require "test/unit"
 
 class MyVeryFirstHonestTest < Test::Unit::TestCase
