@@ -26,7 +26,10 @@ class AgainTicketMyFriend
 end
 
 
-puts AgainTicketMyFriend::VENUES
+p AgainTicketMyFriend::VENUES # ["Convention Center", "Fairgrounds", "Town Hall"]
+AgainTicketMyFriend::VENUES << "High School Gym" # ["Convention Center", "Fairgrounds", "Town Hall", "High School Gym"]
+p AgainTicketMyFriend::VENUES #
+
 # AgainTicketMyFriend.new("a", Time.new) # it raises Unknown venue a (ArgumentError)
 AgainTicketMyFriend.new("Fairgrounds", Time.new)
 
@@ -43,3 +46,10 @@ end
 puts SomeModule::InnerModule::MyClass::CONSTANT # 4
 #puts SomeModule::InnerModule::MyClass.CONSTANT # it does not work: undefined method `CONSTANT' for SomeModule::InnerModule::MyClass:Class (NoMethodError)
 puts SomeModule::InnerModule::MyClass.constants # it returns CONSTANT
+
+
+puts RUBY_VERSION
+puts RUBY_PATCHLEVEL
+puts RUBY_RELEASE_DATE
+puts RUBY_REVISION
+puts RUBY_COPYRIGHT
