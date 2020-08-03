@@ -124,3 +124,23 @@ puts "David's new whole name: #{david.whole_name}"
 # David's whole name: David Black
 # David's new whole name: David Alan Black
 
+class C6
+  def set_v
+    @v = "I am an instance variable and I belong to any instance of C."
+  end
+
+  def show_var
+    puts @v
+  end
+
+  def self.set_v
+    @v = "I am an instance variable and I belong to C."
+  end
+end
+
+C6.set_v
+c = C6.new
+c.set_v
+c.show_var
+
+# I am an instance variable and I belong to any instance of C.
