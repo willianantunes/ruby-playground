@@ -28,3 +28,21 @@ c_instance.m
 # self is C
 # Instance method C#m:
 # self is #<C:0x00007fc9ea871340>
+
+class C2
+  puts "Just started class C2:"
+  puts self
+  module M2
+    puts "Nested module C2::M2:"
+    puts self
+  end
+  puts "Back in the outer level of C2:"
+  puts self
+end
+
+# Just started class C2:
+# C2
+# Nested module C2::M2:
+# C2::M2
+# Back in the outer level of C2:
+# C2
