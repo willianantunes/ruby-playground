@@ -1,10 +1,11 @@
 # Summary
 
-- This chapter covers
-- Literal object constructors
-- Syntactic sugar
-- “Dangerous” and/or destructive methods
-- The `to_*` family of conversion methods
-- Boolean states and objects, and `nil`
-- Object-comparison techniques
-- Runtime inspection of objects’ capabilities
+- Ruby’s literal constructors
+- Syntactic sugar converting methods into operators
+- “Destructive” methods and bang methods
+- Conversion methods (`to_s` and friends)
+- The `inspect` and `display` methods
+- Boolean values and Boolean objects
+- The special object `nil`
+- Comparing objects and the `Comparable` module
+- Examining an object’s methods
