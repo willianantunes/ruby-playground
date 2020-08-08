@@ -55,4 +55,16 @@ str = "Hi "
 str << "there."
 puts str
 
+str = "Hi "
+puts "#{str}there."
 
+
+puts "My name is #{
+class Person
+  attr_accessor :name
+end
+
+d = Person.new
+d.name = "David"
+d.name
+}."
