@@ -32,7 +32,7 @@ puts "##############################"
 
 puts Time.new # 2020-08-08 15:11:20 -0300
 puts Time.at(100000000) # 1973-03-03 06:46:40 -0300
-puts Time.mktime(2007,10,3,14,3,6) # 2007-10-03 14:03:06 -0300
+puts Time.mktime(2007, 10, 3, 14, 3, 6) # 2007-10-03 14:03:06 -0300
 puts Time.parse("March 22, 1985, 10:35 PM") # 1985-03-22 22:35:00 -0300
 
 puts "##############################"
@@ -54,7 +54,6 @@ puts t.sec # 57
 d = Date.today
 puts d.day # 8
 
-
 puts t.sunday? # false
 puts d.saturday? # true
 puts dt.friday? # false
@@ -74,3 +73,38 @@ puts Date.today.iso8601 # 2020-08-08
 puts DateTime.now.httpdate # Sat, 08 Aug 2020 18:36:34 GMT
 puts DateTime.now.iso8601 # 2020-08-08T15:37:22-03:00
 puts Time.now.iso8601 # 2020-08-08T15:37:32-03:00
+
+puts "##############################"
+
+# Time objects let you add and subtract seconds from them
+puts t = Time.now # 2020-08-08 15:40:00 -0300
+puts t - 20 # 2020-08-08 15:39:40 -0300
+puts t + 20 # 2020-08-08 15:40:20 -0300
+
+# Date and date/time objects interpret + and – as day-wise operations,
+# and they allow for month-wise conversions with << and >>
+
+puts dt = DateTime.now # 2020-08-08T15:43:27-03:00
+puts dt + 100 # 2020-11-16T15:43:27-03:00
+puts dt >> 3 # 2020-11-08T15:43:27-03:00
+puts dt << 10 # 2019-10-08T15:43:27-03:00
+
+puts d = Date.today # 2020-08-08
+puts d.next # 2020-08-09
+puts d.next_year # 2021-08-08
+puts d.next_month(3) # 2020-11-08
+puts d.prev_day(10) # 2020-07-29
+
+d = Date.today
+next_week = d + 7
+d.upto(next_week) { |date| puts "#{date} is a #{date.strftime("%A")}" }
+
+# 2020-08-08 is a Saturday
+# 2020-08-09 is a Sunday
+# 2020-08-10 is a Monday
+# 2020-08-11 is a Tuesday
+# 2020-08-12 is a Wednesday
+# 2020-08-13 is a Thursday
+# 2020-08-14 is a Friday
+# 2020-08-15 is a Saturday
+
