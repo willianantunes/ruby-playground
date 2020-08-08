@@ -50,3 +50,51 @@ p %w(David\ A.\ Black is a Rubyist.) # ["David A. Black", "is", "a", "Rubyist."]
 # But if you need double-quoted strings, you can use %W instead of %w
 p %W(Joe is #{2018 - 1981} years old.) # ["Joe", "is", "37", "years", "old."]
 
+puts "##############################"
+
+# Just as you can create arrays of strings using %w and %W,
+# you can also create arrays of symbols using %i and %I
+p %i(a b c) # [:a, :b, :c]
+d = "David"
+p %I("#{d}") # [:"\"David\""]
+
+
+obj = Object.new
+p Array.try_convert(obj)
+
+def obj.to_ary
+  [1, 2, 3]
+end
+
+p Array.try_convert(obj)
+
+def obj.to_ary
+  "Not an array!"
+end
+
+begin
+  Array.try_convert(obj)
+rescue => e
+  puts "Error: #{e.message}" # Error: can't convert Object to Array (Object#to_ary gives String)
+end
+
+puts "############################## Inserting, retrieving, and removing array elements"
+
+# Any object you add to the array goes at the beginning, at the end, or somewhere in the middle.
+# The most general technique for inserting one or more items into an array
+# is the setter method []= (square brackets and equal sign)
+
+a = []
+a[0] = "first"
+p a
+
+a = [1,2,3,4,5]
+p a[2] # 3
+p a.[](2) # 3
+
+p a = %w(red orange yellow purple gray indigo violet) # ["red", "orange", "yellow", "purple", "gray", "indigo", "violet"]
+p a[3,2] # ["purple", "gray"]
+a[3,2] = "iago", "jafar"
+p a # ["red", "orange", "yellow", "iago", "jafar", "indigo", "violet"]
+
+
