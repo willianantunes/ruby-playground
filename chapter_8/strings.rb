@@ -103,3 +103,14 @@ do_something_with_args(15, 20, <<EOM)
 http://some_very_long_url_or_other_text_best_put_on_its_own_line
   GREG
 EOM
+
+
+# LANG=en_US.iso885915 ruby -e 'puts __ENCODING__'
+puts __ENCODING__ # UTF-8
+puts "Antunes".encoding # UTF-8
+begin
+  puts "Antunés".encode("US-ASCII")
+rescue => e
+  puts e.message # U+00E9 from UTF-8 to US-ASCII
+end
+
