@@ -88,13 +88,57 @@ a = []
 a[0] = "first"
 p a
 
-a = [1,2,3,4,5]
+a = [1, 2, 3, 4, 5]
 p a[2] # 3
 p a.[](2) # 3
 
 p a = %w(red orange yellow purple gray indigo violet) # ["red", "orange", "yellow", "purple", "gray", "indigo", "violet"]
-p a[3,2] # ["purple", "gray"]
-a[3,2] = "iago", "jafar"
+p a[3, 2] # ["purple", "gray"]
+a[3, 2] = "iago", "jafar"
 p a # ["red", "orange", "yellow", "iago", "jafar", "indigo", "violet"]
 
+p "###"
 
+a = %w(red orange yellow purple gray indigo violet)
+p a[3..5] # ["purple", "gray", "indigo"]
+a[1..2] = "IAGO", "JAFAR"
+p a # ["red", "IAGO", "JAFAR", "purple", "gray", "indigo", "violet"]
+
+# There’s a synonym for the [] method: slice. Like [], slice takes one or two arguments
+array = %w(the dog ate the cat)
+articles = array.values_at(0, 3)
+p articles # ["the", "the"]
+
+p arr = [[1], 2, 3, [4, 5]] # [[1], 2, 3, [4, 5]]
+p arr[0] # [1]
+p arr[3][0] # 4
+
+p arr.dig(3, 0) # 4
+
+p [["Joe", %w(loves Lucy,), "his"], "adorable", ["daughter"]].dig(0, 1, 1) # "Lucy,"
+
+a = [1, 2, 3, 4]
+# Prepends objects to the front of self, moving other elements upwards
+p a.unshift(0) # [0, 1, 2, 3, 4]
+p a.push 5 # [0, 1, 2, 3, 4, 5]
+p a << 5 # [0, 1, 2, 3, 4, 5, 5]
+# The methods << and push differ in that push can take more than one argument
+p a.push(6, 7, 8)
+
+p a.pop # 8
+p a.shift # 0
+p a # [1, 2, 3, 4, 5, 5, 6, 7]
+
+a = %w{ one two three four five }
+a.pop(2)
+a.shift(2)
+p a # ["three"]
+
+p [1, 2, 3].concat([4, 5, 6]) # [1, 2, 3, 4, 5, 6]
+p [1, 2, 3] + [4, 5, 6] # [1, 2, 3, 4, 5, 6]
+
+
+p array = [1,2,[3,4,[5],[6,[7,8]]]] # [1, 2, [3, 4, [5], [6, [7, 8]]]]
+p array.flatten # [1, 2, 3, 4, 5, 6, 7, 8]
+p array.flatten(1) # [1, 2, 3, 4, [5], [6, [7, 8]]]
+p array.flatten(2) # [1, 2, 3, 4, 5, 6, [7, 8]]
