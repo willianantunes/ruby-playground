@@ -40,3 +40,37 @@ puts "##############################"
 puts DateTime.new(2009, 1, 2, 3, 4, 5) # 2009-01-02T03:04:05+00:00
 puts DateTime.now # 2020-08-08T15:13:28-03:00
 puts DateTime.parse("October 23, 1973, 10:34 AM") # 2020-08-08T15:13:28-03:00
+
+puts "##############################"
+
+dt = DateTime.now
+puts dt.year # 2020
+puts dt.hour # 15
+puts dt.minute # 30
+puts dt.second # 57
+t = Time.now
+puts t.month # 8
+puts t.sec # 57
+d = Date.today
+puts d.day # 8
+
+
+puts t.sunday? # false
+puts d.saturday? # true
+puts dt.friday? # false
+
+t2 = Time.now
+puts t2.strftime("%m-%d-%y") # 08-08-20
+puts t2.strftime("%x") # 08/08/20
+puts t2.strftime("%d/%m/%Y %H:%M:%S") # 08/08/2020 15:35:17
+
+puts t2.strftime("Today is %x") # Today is 08/08/20
+puts t2.strftime("Otherwise known as %d-%b-%y") # Otherwise known as 08-Aug-20
+puts t2.strftime("Or even day %e of %B, %Y.") # Or even day  8 of August, 2020.
+puts t2.strftime("The time is %H:%m.") # The time is 15:08.
+
+puts Date.today.rfc2822 # Sat, 8 Aug 2020 00:00:00 +0000
+puts Date.today.iso8601 # 2020-08-08
+puts DateTime.now.httpdate # Sat, 08 Aug 2020 18:36:34 GMT
+puts DateTime.now.iso8601 # 2020-08-08T15:37:22-03:00
+puts Time.now.iso8601 # 2020-08-08T15:37:32-03:00
