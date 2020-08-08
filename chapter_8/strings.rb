@@ -89,3 +89,17 @@ This is the heredoc!
 It becomes array[3].
 EOM
 p array # [1, 2, 3, "This is the heredoc!\nIt becomes array[3].\n", 4]
+
+puts "###########################"
+
+def do_something_with_args(a,b,c)
+  puts c
+end
+
+# And you can use the <<EOM notation as a method argument; the argument
+# becomes the heredoc that follows the line on which the method call occurs.
+# This can be useful if you want to avoid cramming too much text
+do_something_with_args(15, 20, <<EOM)
+http://some_very_long_url_or_other_text_best_put_on_its_own_line
+  GREG
+EOM
