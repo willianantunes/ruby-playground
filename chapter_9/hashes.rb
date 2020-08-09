@@ -73,9 +73,37 @@ p nested_hash = {foo: {bar: "baz"}} # {:foo=>{:bar=>"baz"}}
 p contacts = {john: {
     phone: "555-1234",
     email: "john@example.com"},
-            eric: {
-                phone: "555-1235",
-                email: "eric@example.com"}} # {:john=>{:phone=>"555-1234", :email=>"john@example.com"}, :eric=>{:phone=>"555-1235", :email=>"eric@example.com"}}
+              eric: {
+                  phone: "555-1235",
+                  email: "eric@example.com"}} # {:john=>{:phone=>"555-1234", :email=>"john@example.com"}, :eric=>{:phone=>"555-1235", :email=>"eric@example.com"}}
 
 # The dig method makes such collections more easily accessible. Hash#dig takes one or more symbols as arguments
 p contacts.dig(:eric, :email) # "eric@example.com"
+
+puts "#########"
+
+p h = Hash.new { |hash, key| hash[key] = 0 } # {}
+p h["jafar"]
+p h["iago"]
+p h["aladdin"] = "jasmine"
+p h # {"jafar"=>0, "iago"=>0, "aladdin"=>"jasmine"}
+
+h1 = {first: "Joe",
+      last: "Leo",
+      suffix: "III"}
+h2 = {suffix: "Jr."}
+# The destructive operation is performed with the update method.
+# Entries in the first hash are overwritten permanently if the second hash has a corresponding key
+h1.update(h2)
+puts h1[:suffix] # Jr.
+p h1 # {:first=>"Joe", :last=>"Leo", :suffix=>"Jr."}
+
+
+h1 = {first: "Joe",
+      last: "Leo",
+      suffix: "III"}
+h2 = {suffix: "Jr."}
+# To perform nondestructive combining of two hashes, use the merge method, which gives you a third hash and leaves the original unchanged
+h3 = h1.merge(h2)
+p h1[:suffix] # "III"
+
