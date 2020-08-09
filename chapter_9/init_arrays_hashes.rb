@@ -142,3 +142,28 @@ p array = [1,2,[3,4,[5],[6,[7,8]]]] # [1, 2, [3, 4, [5], [6, [7, 8]]]]
 p array.flatten # [1, 2, 3, 4, 5, 6, 7, 8]
 p array.flatten(1) # [1, 2, 3, 4, [5], [6, [7, 8]]]
 p array.flatten(2) # [1, 2, 3, 4, 5, 6, [7, 8]]
+
+p [1,2,3,4].reverse # [4, 3, 2, 1]
+p ["abc", "def", 123].join # "abcdef123"
+p ["abc", "def", 123].join(", ") # "abc, def, 123"
+
+a = %w(one two three)
+p a * "-" # "one-two-three"
+# Duplicate status is determined by testing pairs of elements with the == method
+p [1,2,3,1,4,3,5,1].uniq # [1, 2, 3, 4, 5]
+
+# Compact method returns a new array identical to the
+# original array, except that all occurrences of nil have been removed
+
+zip_codes = ["06511", "08902", "08902", nil, "10027", "08902", nil, "06511"]
+p zip_codes.compact # ["06511", "08902", "08902", "10027", "08902", "06511"]
+
+puts "###############"
+
+# a.size (synonyms: length, count)	Number of elements in the array
+# a.empty?	True if a is an empty array; false if it has any elements
+# a.include?(item)	True if the array includes item; false, otherwise
+# a.count(item)	Number of occurrences of item in array
+# a.first(n=1)	First n elements of array
+# a.last(n=1)	Last n elements of array
+# a.sample(n=1)	n random elements from array
