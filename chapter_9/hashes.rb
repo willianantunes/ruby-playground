@@ -107,3 +107,44 @@ h2 = {suffix: "Jr."}
 h3 = h1.merge(h2)
 p h1[:suffix] # "III"
 
+puts "#########"
+
+p h = Hash[1, 2, 3, 4, 5, 6] # {1=>2, 3=>4, 5=>6}
+p h.select { |k, v| k > 1 } # {3=>4, 5=>6}
+p h.reject { |k, v| k > 1 } # {1=>2}
+p h # {1=>2, 3=>4, 5=>6}
+# Be careful when you invert hashes. Because hash keys are unique, but values aren’t,
+# when you turn duplicate values into keys, one of the pairs is discarded
+p h.invert # {2=>1, 4=>3, 6=>5}
+p h # {1=>2, 3=>4, 5=>6}
+h = {1 => "one", 2 => "two"}.replace({10 => "ten", 20 => "twenty"})
+p h # {10=>"ten", 20=>"twenty"}
+
+puts "#########"
+
+# Common hash query methods and their meanings
+# - h.has_key?(1)	True if h has the key 1
+# - h.include?(1)	Synonym for has_key?
+# - h.key?(1)	Synonym for has_key?
+# - h.member?(1)	Synonym for has_key?
+# - h.has_value?("three")	True if any value in h is "three"
+# - h.value?("three")	Synonym for has_value?
+# - h.empty?	True if h has no key/value pairs
+# - h.size	Number of key/value pairs in h
+
+class City
+  attr_accessor :name, :state, :population
+end
+
+def add_to_city_database(name, info)
+  c = City.new
+  c.name = name
+  c.state = info[:state]
+  c.population = info[:population]
+  p c # #<City:0x00007fc6048de790 @name="New York City", @state="New York", @population=7000000>
+end
+
+add_to_city_database("New York City",
+                     state: "New York",
+                     population: 7000000,
+                     nickname: "Big Apple")
