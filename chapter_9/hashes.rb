@@ -148,3 +148,20 @@ add_to_city_database("New York City",
                      state: "New York",
                      population: 7000000,
                      nickname: "Big Apple")
+
+puts "#########"
+
+def m(a:, b:)
+  p a, b
+end
+
+# Using named arguments saves you the trouble of “unwrapping” hashes in your methods.
+# Here’s a barebones example that shows the most basic version of named arguments
+p m(b: 2, a: 1) # [1, 2]
+# p m(1, 2) # wrong number of arguments (given 2, expected 0; required keywords: a, b) (ArgumentError)
+
+def m(x, y, *z, a: 1, b:, **c, &block)
+  p x, y, z, a, b, c
+end
+
+p m(1, 2, 3, 4, 5, b: 10, p: 20, q: 30) # [1, 2, [3, 4, 5], 1, 10, {:p=>20, :q=>30}]
