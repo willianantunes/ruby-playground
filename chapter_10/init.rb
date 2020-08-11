@@ -55,6 +55,12 @@ puts "First color starting with 'y' is #{y_color}." # First color starting with 
 p Enumerable.instance_methods(false).sort # [:all?, :any?, :chain, :chunk, :chunk_while, :collect, :collect_concat, :count, :cycle, :detect, :drop, :drop_while, :each_cons, :each_entry, :each_slice, :each_with_index, :each_with_object, :entries, :filter, :find, :find_all, :find_index, :first, :flat_map, :grep, :grep_v, :group_by, :include?, :inject, :lazy, :map, :max, :max_by, :member?, :min, :min_by, :minmax, :minmax_by, :none?, :one?, :partition, :reduce, :reject, :reverse_each, :select, :slice_after, :slice_before, :slice_when, :sort, :sort_by, :sum, :take, :take_while, :to_a, :to_h, :uniq, :zip]
 
 
+r = Rainbow.new
+p r.select { |color| color.size == 6 } # ["orange", "yellow", "indigo", "violet"]
+p r.map { |color| color[0, 3] } # ["red", "ora", "yel", "gre", "blu", "ind", "vio"]
+p r.drop_while { |color| color.size < 5 } # ["orange", "yellow", "green", "blue", "indigo", "violet"]
+
+
 states = ["Louisiana"]
 p states.include?("Louisiana") # true
 p states.all? { |state| state =~ / / } # false
