@@ -68,3 +68,79 @@ class Ticket
     end
   end
 end
+
+class Person
+  attr_accessor :name
+end
+
+david = Person.new
+david.name = "David"
+joe = Person.new
+joe.name = "Joe"
+ruby = Person.new
+ruby.name = "Ruby"
+
+# Now let’s say that some persons—that is, some Person objects—don’t like to reveal their names.
+# A logical way to add this kind of secrecy to individual objects is to add a singleton version
+# of the name method to each of those objects
+def david.name
+  "[not available]"
+end
+
+# https://stackoverflow.com/a/10782889/3899136
+define_singleton_method(:call_their_names) do
+  puts "We've got one person named #{joe.name}, "
+  puts "one named #{david.name},"
+  puts "and one named #{ruby.name}."
+end
+
+call_their_names
+
+# We've got one person named Joe,
+# one named [not available],
+# and one named Ruby.
+
+# So far, so good. But what if more than one person decides to be secretive?
+# It would be a nuisance to have to write def person.name... for every such person
+
+module Secretive
+  def name
+    "[not available]"
+  end
+end
+
+class << ruby
+  include Secretive
+end
+
+call_their_names
+
+
+class C
+  def talk
+    puts "Hi from original class!"
+  end
+end
+
+module M
+  def talk
+    puts "Hello from module!"
+  end
+end
+
+c = C.new
+c.talk
+
+class << c
+  include M
+  # You can see this graphically by using the ancestors method,
+  # which gives you a list of the classes and modules in the inheritance
+  # and inclusion hierarchy of any class or module
+  p ancestors # [#<Class:#<C:0x00007f8dea133218>>, M, C, Object, Kernel, BasicObject]
+end
+
+c.talk
+
+# Hi from original class!
+# Hello from module!
+
