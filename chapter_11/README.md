@@ -7,9 +7,13 @@
 
 # Summary
 
-- The `Enumerable` module and its instance methods
-- Using `Enumerable` in your own classes
-- Enumerator basics
-- Creating enumerators
-- Iterating over strings
-- Lazy enumerators
+- The underlying principles behind regular expression pattern matching
+- The `match` and `=~` techniques
+- Character classes
+- Parenthetical captures
+- Quantifiers
+- Modifiers
+- Anchors
+- `MatchData` objects
+- String/regexp interpolation and conversion
+- Ruby methods that use regexps: `scan`, `split`, `grep`, `sub`, `gsub`
