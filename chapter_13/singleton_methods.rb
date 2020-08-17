@@ -144,3 +144,22 @@ c.talk
 # Hi from original class!
 # Hello from module!
 
+string = "a string"
+p string.class.ancestors # [String, Comparable, Object, Kernel, BasicObject]
+p string.singleton_class.ancestors # [#<Class:#<String:0x00007f996a042cd8>>, String, Comparable, Object, Kernel, BasicObject]
+
+class C
+end
+
+def C.a_class_method
+  puts "Singleton method defined on C"
+end
+
+C.a_class_method # Singleton method defined on C
+
+class D < C
+end
+
+D.a_class_method # Singleton method defined on C
+
+
