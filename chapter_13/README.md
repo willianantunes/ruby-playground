@@ -1,4 +1,4 @@
-# Chapter detals
+# Chapter details
 
 - Singleton methods and classes
 - Class methods
