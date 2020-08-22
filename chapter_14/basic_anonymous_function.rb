@@ -48,3 +48,11 @@ p albums[2015] # "To Pimp a Butterfly"
 
 p [1988, 1996].map(&albums) # ["Straight Outta Compton", "The Score"]
 p (1990..1999).map(&albums).compact # ["Midnight Marauders", "The Score"]
+
+# One is the square-brackets method/operator, which is a synonym for call.
+# You place any arguments inside the brackets:
+mult = lambda { |x, y| x * y }
+p mult[3, 4] # 12
+
+# You can also call callable objects using the () method:
+p mult.(3,4) # 12
